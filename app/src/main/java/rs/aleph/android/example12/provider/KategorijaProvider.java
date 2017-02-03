@@ -13,16 +13,16 @@ public class KategorijaProvider {
     public static List<String> getKategorijaNazivi() {
 
         List<String> nazivi = new ArrayList<>();
-        nazivi.add("Kategorija 1");
-        nazivi.add("Kategorija 2");
+        nazivi.add("Vegetables");
+        nazivi.add("Fruits");
         return nazivi;
     }
     public static Kategorija getKategorijaById(int id){
         switch (id) {
             case 0:
-                return new Kategorija(0,"Kategorija 1");
+                return new Kategorija(0,"Vegetables");
             case 1:
-                return new Kategorija(1,"Kategorija 2");
+                return new Kategorija(1,"Fruits");
             default:
                 return null;
         }
