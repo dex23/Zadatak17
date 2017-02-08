@@ -6,13 +6,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
 
 import rs.aleph.android.example12.R;
 import rs.aleph.android.example12.provider.JeloProvider;
+import rs.aleph.android.example12.provider.KategorijaProvider;
+import rs.aleph.android.example12.provider.SastojakProvider;
 
 /**
  * Created by user on 8.2.2017..
@@ -56,9 +64,49 @@ public class DetailFragment extends Fragment {
             e.printStackTrace();
         }
 
+        TextView tvNaziv = (TextView) getView().findViewById(R.id.tv_naziv);
+        tvNaziv.setText(JeloProvider.getJeloById(position).getNaziv());
+
+        TextView tvOpis = (TextView) getView().findViewById(R.id.tv_opis);
+        tvOpis.setText(JeloProvider.getJeloById(position).getOpis());
+
+        //TextView tvKategorija = (TextView) findViewById(R.id.tv_kategorija);
+        //tvKategorija.setText(JeloProvider.getJeloById(position).getKategorija().getNaziv());
+
+        Spinner kategorija = (Spinner) getView().findViewById(R.id.sp_kategorija);
+        List<String> kategorije = KategorijaProvider.getKategorijaNazivi();
+        ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, kategorije);
+        kategorija.setAdapter(adapter);
+        kategorija.setSelection((int)JeloProvider.getJeloById(position).getKategorija().getId());
+
+        final List<String> sastojciNazivi = SastojakProvider.getSastojakNazivi(JeloProvider.getJeloById(position));
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item, sastojciNazivi);
+
+        ListView listView = (ListView) getView().findViewById(R.id.list_sastojci);
+
+        listView.setAdapter(dataAdapter);
+
+        TextView tvKalorije = (TextView) getView().findViewById(R.id.tv_kalorije);
+        tvKalorije.setText(String.format(Locale.getDefault(),getString(R.string.jelo_calories),JeloProvider.getJeloById(position).getKalorije()));
+
+        TextView tvCena = (TextView) getView().findViewById(R.id.tv_cena);
+        tvCena.setText(String.format(Locale.getDefault(), getString(R.string.jelo_price),JeloProvider.getJeloById(position).getCena()));
 
     }
 
+    public void setContent(final int position) {
+
+        this.position = position;
+
+    }
+
+    public void updateContent(final int position) {
+
+        this.position = position;
+
+        fillContent(position);
+
+    }
 
 
 }
