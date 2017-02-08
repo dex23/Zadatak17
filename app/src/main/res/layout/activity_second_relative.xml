@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16sp"
+    android:paddingRight="16sp">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="8sp"
+        />
+    <TextView
+        android:id="@+id/tv_naziv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_image"
+        android:paddingLeft="8sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_opis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_image"
+        android:layout_below="@+id/tv_naziv"
+        android:paddingLeft="8sp"
+        />
+    <Spinner
+        android:id="@+id/sp_kategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_image"
+        android:layout_below="@+id/tv_opis"
+        />
+
+    <ListView
+        android:id="@+id/list_sastojci"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_image"
+        android:layout_alignParentLeft="true"
+        />
+    <TextView
+        android:id="@+id/tv_kalorije"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingLeft="8sp"
+        android:layout_below="@+id/list_sastojci"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/tv_centar"
+        />
+    <TextView
+        android:id="@+id/tv_centar"
+        android:layout_width="16sp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/list_sastojci"
+        />
+    <TextView
+        android:id="@+id/tv_cena"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/list_sastojci"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tv_centar"
+        />
+
+</RelativeLayout>
