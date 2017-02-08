@@ -118,7 +118,7 @@ public class FirstActivity extends Activity {
 		super.onDestroy();
 	}
 
-	//@Override
+	@Override
 	public void onItemSeleceted(int position) {
 
 		if (landscape) {
